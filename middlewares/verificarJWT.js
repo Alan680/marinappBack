@@ -1,17 +1,18 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import { request, response } from 'express';
+import { Request, Response, NextFunction } from 'express'; // Importa Request y Response desde 'express'
 
 dotenv.config();
 
-const verificarToken = (req = request, res = response, next) => {
-    const token = req.token;
-    console.log("token back", req.body.token);
+const verificarToken = (req, res, next) => {
+    const authorizationHeader = req.headers['authorization']; // Obtiene el encabezado de autorización
 
-    if (!token) {
+    if (!authorizationHeader) {
         console.log('No se proporcionó ningún token');
         return res.status(401).json({ message: 'Acceso no autorizado: No se proporcionó ningún token' });
     }
+
+    const token = authorizationHeader.split(' ')[1]; // Divide el encabezado para obtener el token
 
     try {
         const payload = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
@@ -25,4 +26,3 @@ const verificarToken = (req = request, res = response, next) => {
 };
 
 export default verificarToken;
-
