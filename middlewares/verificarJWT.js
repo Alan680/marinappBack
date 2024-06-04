@@ -6,7 +6,7 @@ dotenv.config();
 
 const verificarToken = (req = request, res = response, next) => {
     const token = req.token;
-    console.log("token back", req.token);
+    console.log("token back", req.body.token);
 
     if (!token) {
         console.log('No se proporcionó ningún token');
