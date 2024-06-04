@@ -20,12 +20,14 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 // Configuración de CORS
+// Configuración de CORS
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'https://marinapp-front.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true // Permitir el envío de credenciales en las solicitudes CORS
 }));
+
 
 
 
