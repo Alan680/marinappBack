@@ -21,9 +21,11 @@ app.use(express.static('public'));
 
 // Configuración de CORS
 app.use(cors({
-    origin: 'http://localhost:5173', // Poner url del frontEnd
-    credentials: true 
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 
 // Rutas
 app.use('/', indexRouter);
