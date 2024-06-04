@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import { Request, Response, NextFunction } from 'express'; // Importa Request y Response desde 'express'
 
 dotenv.config();
 
