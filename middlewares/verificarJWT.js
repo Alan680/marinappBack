@@ -5,7 +5,8 @@ import { request, response } from 'express';
 dotenv.config();
 
 const verificarToken = (req = request, res = response, next) => {
-    const token = req.cookies.token;
+    const token = req.token;
+    console.log("token back", req.token);
 
     if (!token) {
         console.log('No se proporcionó ningún token');
